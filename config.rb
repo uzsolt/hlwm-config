@@ -16,6 +16,9 @@ SEPARATOR   =   "SEP"
 SEPARATOR2  =   "SEP2"
 SEPARATOR3  =   "SEP3"
 
+KC_USE_TAG  =   WINKEY+"t"
+KC_MOVE_TAG =   WINKEY+"m"
+
 =begin rdoc
 What should run after entering keychain.
 <i>%n</i> will substitute the name of the keychain.

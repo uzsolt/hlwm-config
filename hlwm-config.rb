@@ -59,6 +59,27 @@ def doTags(arr=ARR_TAGS)
     }, "add %k #{SEPARATOR} load %k \"%v\"")
 end
 
+def hashTags(cmd)
+    ret = Hash.new
+    ARR_TAGS.each { |k,v|
+        ret[v[0]]   =  "#{cmd} #{k}"
+    }
+    ret
+end
+
+def doTagsKeychain(arr=ARR_TAGS)
+    doKeychain([
+        {"name" =>  "tag",
+         "key"  =>  KC_USE_TAG,
+         "chains"   =>  hashTags("use")
+        },
+        {"name" =>  "move",
+         "key"  =>  KC_MOVE_TAG,
+         "chains"   =>  hashTags("move")
+        }
+    ])
+end
+
 =begin rdoc
 Create string of rules.
 =end
@@ -83,7 +104,7 @@ def doChain(arr,format,sep=SEPARATOR)
 end
 
 loadConfig("config.rb")
-#puts doKeychain(ARR_KEYCHAINS)
-["doTags","doRules","doTheme","doKeybind","doKeychain"].each { |k|
+
+["doTags","doRules","doTheme","doKeybind","doKeychain","doTagsKeychain"].each { |k|
     system "herbstclient chain " + send(k)
 }
