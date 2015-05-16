@@ -1,4 +1,8 @@
 Simple configurator for herbstluftwm [1].
-Programmed in Ruby language as in first practice.
+Programmed in Ruby language as my first practice.
+
+To use it please edit your herbstluftwm's autostart to run hlwm-config.rb.
+
+For configuration please check and adit config.rb!
 
 [1] http://www.herbstluftwm.org/
