@@ -7,7 +7,7 @@ WINKEY  =   "Mod4-"
 HLWM_DIR    =   "~/.config/herbstluftwm"
 HLWM_SCRIPT_DIR =   "#{HLWM_DIR}/scripts"
 BROWSER =   "spawn /home/zsolt/bin/mybrowser"
-URXVT   =   "spawn urxt-config-sh"
+URXVT   =   "spawn /home/zsolt/bin/urxvt-config-sh"
 
 =begin rdoc
 Key sequences to enter "use tag" keychain
@@ -260,6 +260,12 @@ ARR_RULES = [
     {:windowtype    =>  "_NET_WM_WINDOW_TYPE_UTILITY",
      :manage        =>  "off",
      :focus         =>  "on"},
+    {:windowtype    =>  "_NET_WM_WINDOW_TYPE_NOTIFICATION",
+     :manage        =>  "off"
+    },
+    {:windowtype    =>  "_NET_WM_WINDOW_TYPE_DOCK",
+     :manage        =>  "off"
+    },
     {:class     =>  "Yad",
      :pseudotile    =>  "on"
     }
