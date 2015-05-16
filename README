@@ -3,6 +3,7 @@ Programmed in Ruby language as my first practice.
 
 To use it please edit your herbstluftwm's autostart to run hlwm-config.rb.
 
-For configuration please check and adit config.rb!
+For configuration please check and edit config.rb! Place it into
+$XDG_CONFIG_HOME/herbstluftwm!
 
 [1] http://www.herbstluftwm.org/
