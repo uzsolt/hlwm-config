@@ -21,26 +21,32 @@ end
 Create string of keybinds which can use with <b>herbstclient</b>.
 =end
 def doKeybind(arr=ARR_KEYBIND,sep=SEPARATOR)
-    doChain(arr,"keybind %k %v")
+    doChain(arr,"keybind %k %v",sep)
 end
 
 =begin rdoc
 Create string of keychains.
 =end
-def doKeychain(arr)
-    keych = ""
-    arr.each { |k,v|
+def doKeychain(arr=ARR_KEYCHAINS)
+    arrkc = Hash.new()
+    arr.each { |v|
+        keych = ""
         keyunbind = ""
-        v[0][2].each { |key|
-            keyunbind += " #{SEPARATOR3} #{strKeyunbind(key)}"
+        v["chains"][KEYCHAIN_EXITKEY] = ""
+        v["chains"].keys.each { |key|
+            keyunbind += " #{SEPARATOR3} keyunbind #{key}"
         }
+        keyunbind += " #{SEPARATOR3} #{KEYCHAIN_LEAVE.gsub(/%n/,v["name"])}"
 
-        keych += " #{SEPARATOR} #{strKeybind(v[0])} chain "+
-            "#{SEPARATOR2} emit_hook chain_enter #{k}" +
-            doKeybind(v[0][2].map{|x| x[2]+=" XXX"},SEPARATOR2) +
-            " #{SEPARATOR2} keybind Escape chain #{keyunbind}"
+        chdup = v["chains"].dup
+        chdup.update(chdup) {
+            |ck,cv|
+            "chain #{SEPARATOR3} #{cv} #{keyunbind}"
+        }
+        keych += doKeybind(chdup,SEPARATOR2)
+        arrkc[v["key"]] = "chain #{SEPARATOR2} #{KEYCHAIN_ENTER.gsub(/%n/,v["name"])} #{keych}"
     }
-    keych
+    doKeybind arrkc
 end
 
 =begin rdoc
@@ -78,6 +84,6 @@ end
 
 loadConfig("config.rb")
 #puts doKeychain(ARR_KEYCHAINS)
-["doTags","doRules","doTheme","doKeybind"].each { |k|
+["doTags","doRules","doTheme","doKeybind","doKeychain"].each { |k|
     system "herbstclient chain " + send(k)
 }

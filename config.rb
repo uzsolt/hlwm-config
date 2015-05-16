@@ -6,6 +6,7 @@ SHIFT   =   "Shift-"
 WINKEY  =   "Mod4-"
 HLWM_DIR    =   "~/.config/herbstluftwm"
 HLWM_SCRIPT_DIR =   "#{HLWM_DIR}/scripts"
+BROWSER =   "spawn /home/zsolt/bin/mybrowser"
 
 =begin rdoc
 Specify separator sequences.
@@ -16,13 +17,20 @@ SEPARATOR3  =   "SEP3"
 
 =begin rdoc
 What should run after entering keychain.
+<i>%n</i> will substitute the name of the keychain.
 =end
 KEYCHAIN_ENTER = "emit_hook chain_enter %n"
 
 =begin rdoc
 What should run after leave keychain.
+<i>%n</i> will substitute the name of the keychain.
 =end
 KEYCHAIN_LEAVE = "emit_hook chain_leave %n"
+
+=begin rdoc
+Which key to cancel the keychains.
+=end
+KEYCHAIN_EXITKEY = "Escape"
 
 =begin rdoc
 The keybinds hash.
@@ -42,20 +50,47 @@ ARR_KEYBIND = {
 }
 
 =begin rdoc
-The keychains hash.
-The key is the name of "chain"
-FIXME
+The keychains array of hashes.
+The hash: <i>name</i> is the name of the keychain,
+<i>key</i> is the hotkey to enter to keychain,
+<i>chains</i> is a hash as <i>ARR_KEYBIND</i>
 =end
-ARR_KEYCHAINS = {
-    "frame"     =>  {
-        WINKEY+"f"  =>  {
+ARR_KEYCHAINS = [
+    {
+        "name"  =>  "frame",
+        "key"   =>  WINKEY+"f",
+        "chains"=>  {
             "a" =>  "shift left",
             "s" =>  "shift right",
             "q" =>  "shift up",
             "y" =>  "shift down"
         }
+    },
+    {
+        "name"  =>  "web",
+        "key"   =>  WINKEY+"w",
+        "chains"=>  {
+            "g"	=>	"#{BROWSER} \"mail.google.com/mail/u/0/#search/l%3Aunread\"",
+            "h"	=>	"#{BROWSER} \'hup.hu/user/4277/track\'",
+            "m"	=>	"#{BROWSER} 'www.bgrg.mozanaplo.hu'",
+            "f"	=>	"#{BROWSER} 'www.facebook.com'",
+            "t"	=>	"#{BROWSER} 'http://rpi:9091/transmission/web/'",
+            "r"	=>	"#{BROWSER} 'https://direktnet.raiffeisen.hu/rai/direktnet/home.do'"
+        }
+    },
+    {
+        "name"  =>  "layout",
+        "key"   =>  WINKEY+"a",
+        "chains"=>  {
+            "v" =>  "set_layout vertical",
+            "h" =>  "set_layout horizontal",
+            "m" =>  "set_layout max",
+            "g" =>  "set_layout grid",
+            "r" =>  "rotate",
+            "f" =>  "floating on"
+        }
     }
-}
+]
 
 =begin rdoc
 Stores the tags properties.
