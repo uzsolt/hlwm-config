@@ -9,7 +9,14 @@ HLWM_SCRIPT_DIR =   "#{HLWM_DIR}/scripts"
 BROWSER =   "spawn /home/zsolt/bin/mybrowser"
 URXVT   =   "spawn urxt-config-sh"
 
+=begin rdoc
+Key sequences to enter "use tag" keychain
+=end
 KC_USE_TAG  =   WINKEY+"t"
+
+=begin rdoc
+Key sequences to enter "move to tag" keychain
+=end
 KC_MOVE_TAG =   WINKEY+"m"
 
 =begin rdoc
