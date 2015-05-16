@@ -1,13 +1,34 @@
+=begin rdoc
+Specify some constants.
+=end
 ALT     =   "Alt-"
 SHIFT   =   "Shift-"
 WINKEY  =   "Mod4-"
 HLWM_DIR    =   "~/.config/herbstluftwm"
 HLWM_SCRIPT_DIR =   "#{HLWM_DIR}/scripts"
 
+=begin rdoc
+Specify separator sequences.
+=end
 SEPARATOR   =   "SEP"
 SEPARATOR2  =   "SEP2"
 SEPARATOR3  =   "SEP3"
 
+=begin rdoc
+What should run after entering keychain.
+=end
+KEYCHAIN_ENTER = "emit_hook chain_enter %n"
+
+=begin rdoc
+What should run after leave keychain.
+=end
+KEYCHAIN_LEAVE = "emit_hook chain_leave %n"
+
+=begin rdoc
+The keybinds hash.
+
+The key (of hash) is the hotkey, the value is the herbstluftwm command.
+=end
 ARR_KEYBIND = {
     ALT+SHIFT+"q"	=>	"spawn #{HLWM_SCRIPT_DIR}/hlwm_quit.sh",
     ALT+SHIFT+"r"	=>	"reload",
@@ -20,17 +41,20 @@ ARR_KEYBIND = {
     ALT+"Escape"	=>	"use_previous"
 }
 
+=begin rdoc
+The keychains hash.
+The key is the name of "chain"
+FIXME
+=end
 ARR_KEYCHAINS = {
-    "frame"     =>  [
-        [   WINKEY, "f",
-            [
-                [   nil,    "a",    "shift left"    ],
-                [   nil,    "s",    "shift right"   ],
-                [   nil,    "q",    "shift up"      ],
-                [   nil,    "y",    "shift down"    ],
-            ],
-        ]
-    ]
+    "frame"     =>  {
+        WINKEY+"f"  =>  {
+            "a" =>  "shift left",
+            "s" =>  "shift right",
+            "q" =>  "shift up",
+            "y" =>  "shift down"
+        }
+    }
 }
 
 =begin rdoc
@@ -57,6 +81,11 @@ ARR_TAGS = {
     "rpi"   =>  ["i","(clients max:0)"]
 }
 
+=begin rdoc
+Stores the rules.
+
+It's an array. Every item is a hash, its key is the property, its value is its value.
+=end
 ARR_RULES = [
     {:focus     =>  "true"},
     {:class     =>  "Conky",
@@ -119,6 +148,11 @@ ARR_RULES = [
      :focus         =>  "on"}
 ]
 
+=begin rdoc
+The array of theme.
+
+It's a hash. The keys are the property, the values are the property's value.
+=end
 ARR_THEME = {
     :frame_border_normal_color  =>  "#101010",
     :frame_border_active_color  =>  "#222222",
