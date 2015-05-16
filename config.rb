@@ -47,9 +47,8 @@ ARR_KEYBIND = {
     ALT+"Return"	=>	"spawn urxvt",
     ALT+"s"	        =>	"floating toggle",
     ALT+"p"	        =>	"pseudotile toggle",
+    ALT+"Tab"       =>  "cycle",
     WINKEY+"Tab"	=>	"cycle_frame",
-    WINKEY+"Left"	=>	"focus left",
-    WINKEY+"j"	    =>	"focus right",
     ALT+"Escape"	=>	"use_previous"
 }
 
