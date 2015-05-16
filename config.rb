@@ -7,6 +7,7 @@ WINKEY  =   "Mod4-"
 HLWM_DIR    =   "~/.config/herbstluftwm"
 HLWM_SCRIPT_DIR =   "#{HLWM_DIR}/scripts"
 BROWSER =   "spawn /home/zsolt/bin/mybrowser"
+URXVT   =   "spawn urxt-config-sh"
 
 =begin rdoc
 Specify separator sequences.
@@ -88,6 +89,82 @@ ARR_KEYCHAINS = [
             "g" =>  "set_layout grid",
             "r" =>  "rotate",
             "f" =>  "floating on"
+        }
+    },
+    {
+        "name"  =>  "herbst",
+        "key"   =>  WINKEY+"h",
+        "chains"=>  {
+            "1" =>  "spawn xdotool click 1",
+            "2" =>  "spawn xdotool click 2",
+            "t" =>  "spawn #{HLWM_SCRIPT_DIR}/hlwm_translate.sh",
+            "c" =>  "spawn #{HLWM_SCRIPT_DIR}/hlwm_calc.sh"
+        }
+    },
+    {
+        "name"  =>  "info",
+        "key"   =>  WINKEY+"i",
+        "chains"=>  {
+            "v" =>  "spawn #{HLWM_SCRIPT_DIR}/info-vol.sh",
+            "w" =>  "spawn #{HLWM_SCRIPT_DIR}/info-win.sh"
+        }
+    },
+    {
+        "name"  =>  "list",
+        "key"   =>  WINKEY+"l",
+        "chains"=> {
+            "a" =>  "spawn #{HLWM_SCRIPT_DIR}/my-dmenu",
+            "c" =>  "spawn #{HLWM_SCRIPT_DIR}/change_client.sh",
+            "t" =>  "spawn #{HLWM_SCRIPT_DIR}/change_tag.sh"
+        }
+    },
+    {
+        "name"  =>  "musicpd",
+        "key"   =>  WINKEY+"p",
+        "chains"=>  {
+            "space" =>  "spawn mpc toggle",
+            "n"     =>  "spawn mpc next",
+            "s"     =>  "spawn mpc stop",
+            "p"     =>  "spawn mpc play"
+        }
+    },
+    {
+        "name"  =>  "split",
+        "key"   =>  WINKEY+"s",
+        "chains"=>  {
+            "h" =>  "split horizontal 0.5",
+            "v" =>  "split vertical 0.5",
+            "r" =>  "remove"
+        }
+    },
+    {
+        "name"  =>  "vol",
+        "key"   =>  WINKEY+"v",
+        "chains"=>  {
+            "q"     =>  "spawn mixer vol +5",
+            "a"     =>  "spawn mixer vol -5",
+            "Q"     =>  "spawn mixer vol +10",
+            "A"     =>  "spawn mixer vol -10"
+        }
+    },
+    {
+        "name"  =>  "term",
+        "key"   =>  WINKEY+"x",
+        "chains"=>  {
+            "b" =>  "#{URXVT} freebsd",
+            "d" =>  "#{URXVT} dox",
+            "v" =>  "#{URXVT} devel",
+            "x" =>  "#{URXVT} main",
+            "p" =>  "#{URXVT} vps ssh uzsolt.hu",
+            "i" =>  "#{URXVT} rpi ssh rpi"
+        }
+    },
+    {
+        "name"  =>  "client",
+        "key"   =>  WINKEY+"c",
+        "chains"=>  {
+            "c" =>  "close",
+            "x" =>  "close"
         }
     }
 ]
@@ -180,7 +257,10 @@ ARR_RULES = [
      :pseudotile    =>  "on"},
     {:windowtype    =>  "_NET_WM_WINDOW_TYPE_UTILITY",
      :manage        =>  "off",
-     :focus         =>  "on"}
+     :focus         =>  "on"},
+    {:class     =>  "Yad",
+     :pseudotile    =>  "on"
+    }
 ]
 
 =begin rdoc
