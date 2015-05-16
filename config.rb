@@ -9,13 +9,6 @@ HLWM_SCRIPT_DIR =   "#{HLWM_DIR}/scripts"
 BROWSER =   "spawn /home/zsolt/bin/mybrowser"
 URXVT   =   "spawn urxt-config-sh"
 
-=begin rdoc
-Specify separator sequences.
-=end
-SEPARATOR   =   "SEP"
-SEPARATOR2  =   "SEP2"
-SEPARATOR3  =   "SEP3"
-
 KC_USE_TAG  =   WINKEY+"t"
 KC_MOVE_TAG =   WINKEY+"m"
 

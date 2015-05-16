@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 
 =begin rdoc
+Specify separator sequences.
+=end
+SEPARATOR   =   "SEP"
+SEPARATOR2  =   "SEP2"
+SEPARATOR3  =   "SEP3"
+
+=begin rdoc
 Load config file.
 =end
 def loadConfig(file=nil)
