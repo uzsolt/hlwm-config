@@ -110,7 +110,7 @@ def doChain(arr,format,sep=SEPARATOR)
     ret
 end
 
-loadConfig("config.rb")
+loadConfig
 
 ["doTags","doRules","doTheme","doKeybind","doKeychain","doTagsKeychain"].each { |k|
     system "herbstclient chain " + send(k)
