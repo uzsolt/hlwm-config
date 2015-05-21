@@ -100,7 +100,7 @@ ARR_KEYCHAINS = [
             "1" =>  "spawn xdotool click 1",
             "2" =>  "spawn xdotool click 2",
             "t" =>  "spawn #{HLWM_SCRIPT_DIR}/hlwm_translate.sh",
-            "c" =>  "spawn #{HLWM_SCRIPT_DIR}/hlwm_calc.sh"
+            "c" =>  "spawn speedcrunch",
         }
     },
     {
