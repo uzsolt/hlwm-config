@@ -268,6 +268,9 @@ ARR_RULES = [
     },
     {:class     =>  "Yad",
      :pseudotile    =>  "on"
+    },
+    {:instance     =>  "speedcrunch",
+     :pseudotile    =>  "on"
     }
 ]
 
