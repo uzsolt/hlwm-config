@@ -199,6 +199,8 @@ ARR_TAGS = {
 Stores the rules.
 
 It's an array. Every item is a hash, its key is the property, its value is its value.
+
+If you want to use regexp please prefix with '~': <code>:instance => "~.*foo"</code>
 =end
 ARR_RULES = [
     {:focus     =>  "true"},

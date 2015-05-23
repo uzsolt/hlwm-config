@@ -92,8 +92,11 @@ Create string of rules.
 =end
 def doRules(arr=ARR_RULES)
     rules = ""
-    arr.each { |v|
-        rules += " #{SEPARATOR} rule #{doChain(v,"%k=%v","")}"
+    arr.map{ |k| k.update(k){
+        |kk,kv|
+        /^[=~]/.match(kv) ? kv : "=#{kv}"
+    }}.each { |v|
+        rules += " #{SEPARATOR} rule #{doChain(v,"%k%v","")}"
     }
     rules
 end
